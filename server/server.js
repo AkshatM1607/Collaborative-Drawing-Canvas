@@ -22,7 +22,7 @@ const COLORS = [
 io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
 
-    // Assign a random color and name to the user
+    // User session initialization
     const color = COLORS[Math.floor(Math.random() * COLORS.length)];
     const user = {
         name: `User ${socket.id.substr(0, 4)}`,
@@ -39,7 +39,7 @@ io.on('connection', (socket) => {
     // Notify others about the new user
     socket.broadcast.emit('user-joined', { id: socket.id, ...user });
 
-    // Handle incoming drawing data (live preview)
+    // Live drawing synchronization
     socket.on('draw-move', (data) => {
         // Broadcast point to others for live preview
         socket.broadcast.emit('draw-move', {
@@ -48,7 +48,7 @@ io.on('connection', (socket) => {
         });
     });
 
-    // Handle completed strokes
+    // Stroke persistence
     socket.on('draw-end', (stroke) => {
         state.addStroke({ userId: socket.id, ...stroke });
         io.emit('canvas-update', state.history);
@@ -61,7 +61,6 @@ io.on('connection', (socket) => {
         }
     });
 
-    // Handle redo
     socket.on('redo', () => {
         if (state.redo()) {
             io.emit('canvas-update', state.history);

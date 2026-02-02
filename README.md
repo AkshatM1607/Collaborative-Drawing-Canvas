@@ -1,47 +1,49 @@
-# Co-Draw | Collaborative Drawing Canvas
+# Co-Draw
 
-A multi-user drawing application with real-time synchronization, cursor tracking, and global undo/redo.
+A real-time collaborative drawing application built with Node.js and Socket.io.
 
-## Setup Instructions
+## Features
 
-1. **Install Dependencies**:
+- **Real-Time Synchronization**: Seamlessly draw with multiple users simultaneously.
+- **Cursor Tracking**: Live visibility of other users' cursor positions with labeled indicators.
+- **Global Undo/Redo**: Shared history state allowing for collaborative corrections.
+- **Modern Interface**: Clean, dark-themed UI with glassmorphic accents.
+- **Drawing Tools**: Customizable brush size, eraser mode, and a curated color palette.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm (Node Package Manager)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AkshatM1607/Collaborative-Drawing-Canvas.git
+   cd Collaborative-Drawing-Canvas
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. **Start the Server**:
+3. Start the application:
    ```bash
    npm start
    ```
-   *Note: If `npm start` isn't configured, use `node server/server.js`*
 
-3. **Access the App**:
-   Open [http://localhost:3000](http://localhost:3000) in multiple browser tabs to test collaboration.
+The application will be accessible at `http://localhost:3000`.
 
-## Features
+## Technical Overview
 
-- **Real-Time Sync**: Watch others draw point-by-point.
-- **User Indicators**: See where others are pointing with labeled cursors.
-- **Global Undo/Redo**: Undo actions across all connected users.
-- **Premium UI**: Dark-themed, glassmorphic design for a modern feel.
-- **Tools**: Brush, Eraser, Color presets, and Stroke width adjustment.
+- **Frontend**: Vanilla JavaScript with HTML5 Canvas API.
+- **Backend**: Node.js and Express.
+- **Communication**: Socket.io for low-latency WebSocket communication.
+- **State Management**: Server-side history with broadcast synchronization for consistency across all clients.
 
-## How to Test with Multiple Users
+## License
 
-1. Open the application in Tab A.
-2. Open the application in Tab B.
-3. Move your mouse in Tab A - you will see a "User XXXX" cursor move in Tab B.
-4. Draw a line in Tab A - it will appear instantly in Tab B.
-5. Click "Undo" in Tab B - the line drawn in Tab A will disappear for everyone.
-
-## Known Limitations
-
-- **Canvas Scaling**: If users have wildly different window sizes, the drawing coordinates are absolute. Best viewed on similar screen sizes.
-- **History Size**: Very long drawing sessions with thousands of strokes may eventually slow down the initial catch-up and redraw.
-
-## Time Spent
-- Planning & Setup: 15 mins
-- Backend Implementation: 30 mins
-- Frontend Engine & UI: 45 mins
-- Documentation & Polishing: 20 mins
-- **Total**: ~1 hour 50 mins
+This project is open-source and available under the [MIT License](LICENSE).

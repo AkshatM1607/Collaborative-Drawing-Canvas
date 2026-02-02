@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnRedo = document.getElementById('btn-redo');
     const btnClear = document.getElementById('btn-clear');
 
-    // --- Toolbar Handlers ---
+    // Event Listeners
     toolBrush.onclick = () => {
         canvas.tool = 'brush';
         toolBrush.classList.add('active');
@@ -58,11 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btnRedo.onclick = () => client.emit('redo');
     btnClear.onclick = () => {
         if (confirm('Clear canvas for everyone?')) {
-            client.emit('clear'); // TODO: Add server support for clear
+            client.emit('clear');
         }
     };
 
-    // --- Canvas Callbacks ---
+    // Canvas Engine Callbacks
     canvas.onDrawMove = (data) => {
         client.emit('draw-move', data);
     };
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Socket Handlers ---
+    // Socket events
     client.on('init', (data) => {
         users = {};
         data.users.forEach(u => {
