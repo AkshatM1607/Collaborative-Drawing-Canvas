@@ -2,6 +2,9 @@
 
 A real-time collaborative drawing application built with Node.js and Socket.io.
 
+<img width="1868" height="975" alt="image" src="https://github.com/user-attachments/assets/6c72f0bd-c9f9-4fcb-85d1-c4e8718e9c42" />
+
+
 ## Features
 
 - **Real-Time Synchronization**: Seamlessly draw with multiple users simultaneously.
